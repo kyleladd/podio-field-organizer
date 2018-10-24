@@ -23,7 +23,7 @@
         "*://podio.com/*"
       ],
       "js": [
-        "js/jquery/jquery.min.js","js/arrive/minified/arrive.min.js","src/inject/inject.js"
+        "js/jquery/jquery.min.js","js/arrive/minified/arrive.min.js","js/sortablejs/Sortable.min.js","src/inject/inject.js"
       ]
     }
   ]
