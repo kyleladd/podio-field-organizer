@@ -15,6 +15,7 @@
     "persistent": false
   },
   "permissions": [
+    "storage",
     "*://podio.com/*"
   ],
   "content_scripts": [
