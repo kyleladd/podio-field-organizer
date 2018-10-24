@@ -1,0 +1,30 @@
+{
+  "name": "Podio Organizer",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Organizer podio task fields",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "scripts": [
+      "src/bg/background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "*://podio.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://podio.com/*"
+      ],
+      "js": [
+        "js/jquery/jquery.min.js","js/arrive/minified/arrive.min.js","src/inject/inject.js"
+      ]
+    }
+  ]
+}
