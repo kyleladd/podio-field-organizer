@@ -1,21 +1,25 @@
 var settings = [];
 chrome.storage.sync.get(['fields'], function (obj) {
 	settings = obj.fields;
-	console.log("settings",settings);
+  if(!settings){
+    settings = [];
+  }
 });
 
-chrome.extension.onMessage.addListener(
-  function(request, sender, sendResponse) {
-  	if(request.action === "get-settings"){
-  		console.log("settings",settings);
-  		sendResponse(settings);
-  		return;
-  	}
-  	if(request.action === "set-settings"){
-  		debugger;
-  		chrome.storage.sync.set({"fields": request.settings});
-  		settings = request.settings;
+chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+  console.log("request",request.action);
+  console.log("bkgrd settings",settings);
+	if(request.action === "get-settings"){
 		sendResponse(settings);
 		return;
-  	}
-  });
+	}
+	if(request.action === "set-settings"){
+    settings = request.settings;
+    if(!request.settings){
+      settings = [];
+    }
+		chrome.storage.sync.set({"fields": settings});
+  	sendResponse(settings);
+  	return;
+	}
+});
